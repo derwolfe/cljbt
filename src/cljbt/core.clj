@@ -131,14 +131,17 @@
   [dec-value]
   #(- % dec-value))
 
-;; (defn inc-list
-;;   [vals]
-;;   (let [result []]
-;;     (loop [up (inc (first vals))]
-;;       (if ()
-;;         (conj result )
-;;         )
-;;       (recur (rest vals)))))
+(defn dumb-map
+  [func vals]
+  ;; use an accumulator `result` to capture each step
+  (loop [result []
+         values vals]
+    (if-not (empty? values)
+      (recur (conj result (func (first values)))
+             (rest values))
+      result)))
 
+;; cljbt.core> (dumb-map inc [1 2 3 4])
+;; [2 3 4 5]
 
 ;; bring it together for all manner of beasts
