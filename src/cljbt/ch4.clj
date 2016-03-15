@@ -74,7 +74,7 @@
   [suspect-maps]
   (let [->csv (fn [suspect]
                 (str (:name suspect) "," (:glitter-index suspect)))]
-    (->> )(clojure.string/join "\n" (map ->csv suspect-maps))))
+    (clojure.string/join "\n" (map ->csv suspect-maps))))
 
 
 (def t {:name "Edward Cullen", :glitter-index 10})
