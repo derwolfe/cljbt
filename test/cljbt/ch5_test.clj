@@ -15,3 +15,13 @@
                    expected-value (second attribute)]]
          (is (= expected-value
                 (ch5/attr character attr-under-test))))))))
+
+(deftest my-comp-tests
+  (testing "returns a function for a single function"
+    (let [my-comp-out-fn (ch5/my-comp inc dec inc)
+          real-comp-out-fn (comp inc dec inc)
+          parameter 1
+          expected 2
+          out-from-real-comp (real-comp-out-fn parameter)
+          out-from-my-comp (my-comp-out-fn parameter)]
+      (is (= expected out-from-real-comp out-from-my-comp)))))
