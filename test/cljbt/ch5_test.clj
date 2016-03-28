@@ -25,3 +25,22 @@
           out-from-real-comp (real-comp-out-fn parameter)
           out-from-my-comp (my-comp-out-fn parameter)]
       (is (= expected out-from-real-comp out-from-my-comp)))))
+
+(deftest my-assoc-in-tests
+  (testing "associates a value in a nested structure where that value does not exist"
+    (let [original {:top {:bottom 1}}
+          expected {:top {:bottom 1 :blue 42}}
+          result (ch5/my-assoc-in original [:top :blue] 42)]
+      (is (= expected result)))))
+
+(deftest my-update-in-tests
+  (testing "associates a value no args"
+    (let [original {:top {:bottom 1}}
+          expected {:top {:bottom 2}}
+          result (ch5/my-update-in original [:top :bottom] inc)]
+      (is (= expected result))))
+  (testing "updates val with args"
+    (let [original {:top {:bottom 1}}
+          expected {:top {:bottom 8}}
+          result (ch5/my-update-in original [:top :bottom] * 2 2 2)]
+      (is (= expected result)))))
