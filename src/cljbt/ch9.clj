@@ -22,10 +22,3 @@
    md/zip'
    (for [place places]
      (fetch-resource! place))))
-
-
-;; (defn fastest-first
-;;   "Takes a list of deferreds and returns the one that is realized first.
-;;   Returns a deferred that will fire with the first result to have completed."
-;;   [ds]
-;;   ())

@@ -2,6 +2,7 @@
   "concurrency - stuff for chapter 10"
   (:require [manifold.deferred :as md]
             [byte-streams :as bs]
+            [clojure.string :as str]
             [aleph.http :as http]))
 
 
@@ -11,7 +12,10 @@
 
 (defn count-words
   [words]
-  (frequencies words))
+  (->> (str/split words #"--" )
+       first
+       #(str/split % #" ")
+       #(frequencies %)))
 
 (defn fetch!
   []
