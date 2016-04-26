@@ -84,7 +84,6 @@
             :total-parts 5
             :body-parts alien-body-parts})
 
-
 (defn matching-part
   [part]
   {:name (clojure.string/replace (:name part) #"^left-" "right-")

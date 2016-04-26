@@ -5,7 +5,6 @@
   [character attribute]
   (attribute (:attributes character)))
 
-
 (defn my-comp
   "Return a function that is the composition of all functions passed in as arguments"
   [& functions]
@@ -19,7 +18,6 @@
         (if (empty? remaining-fun)
           result
           (recur ((first remaining-fun) result) (rest remaining-fun)))))))
-
 
 (defn my-assoc-in
   "Associate a nested key/value pair with a map"

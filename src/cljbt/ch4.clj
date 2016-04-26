@@ -52,10 +52,9 @@
                          {property (not (nil? (property suspect)))})
         validated (into {} (map #(valid-property %) properties))
         valid-at-all? (fn [validated-suspect]
-                 (every? true? (vals validated-suspect)))]
+                        (every? true? (vals validated-suspect)))]
     {:is-valid (valid-at-all? validated)
      :validation-map validated}))
-
 
 (defn add-suspect-to-file!
   "Add a new suspect to the file"
@@ -68,14 +67,12 @@
         (println (slurp suspects-file)))
       (println "Validation Error" validation-map))))
 
-
 (defn maps->csv
   "convert the suspect maps back into a csv string"
   [suspect-maps]
   (let [->csv (fn [suspect]
                 (str (:name suspect) "," (:glitter-index suspect)))]
     (clojure.string/join "\n" (map ->csv suspect-maps))))
-
 
 (def t {:name "Edward Cullen", :glitter-index 10})
 (def b {:name "Edward Cullen", :glitter 10})
